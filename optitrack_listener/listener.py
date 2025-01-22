@@ -15,7 +15,7 @@ import re
 class OptitrackListener( Node ):
     def __init__(self):
         super().__init__('optitrack_listener')
-        self.declare_parameter('local_interface',  "192.168.1.13")
+        self.declare_parameter('local_interface',  "192.168.1.4")
         self.ipaddr = self.get_parameter('local_interface').get_parameter_value().string_value
         self.declare_parameter('fixed_frame', 'world')
         self.frame = self.get_parameter('fixed_frame').get_parameter_value().string_value
@@ -77,7 +77,9 @@ class OptitrackListener( Node ):
         return transform_stamped  
     def get_optitrack_data(self):
         
-        self.version = (2, 5, 0, 0)  # the latest SDK version
+        self.version = (2, 7, 0, 0)  # the latest SDK version
+        self.get_logger().warn(f"address: {self.ipaddr}")
+
         self.optitrack = rx.mkdatasock(ip_address=self.ipaddr)#(ip_address=get_ip_address(iface))
               
         ps = PoseStamped()
