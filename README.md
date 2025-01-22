@@ -54,7 +54,7 @@ To configure the node a proper configuration file is already contained in the co
 	optitrack_listener:
 		ros__parameters:
 			fixed_frame: "map"
-			local_interface: '172.22.160.20'
+			local_interface: '192.168.1.4'
 			rigid_object_list: 'body_2,body_3'
 			trackables:
 				body_2:
